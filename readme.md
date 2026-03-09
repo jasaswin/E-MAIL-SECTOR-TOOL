@@ -57,7 +57,9 @@ Excel export
 Parallel processing
 
 How to Run
+
 pip install -r requirements.txt
+
 python app.py
 
 Open:
