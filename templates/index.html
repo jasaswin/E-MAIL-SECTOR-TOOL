@@ -1,0 +1,81 @@
+
+
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>Data Enrichment Tool</title>
+<link rel="stylesheet" href="/static/style.css">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<h1>Data Enrichment Tool</h1>
+
+<div class="container">
+
+<div class="left">
+
+<form method="POST" enctype="multipart/form-data">
+
+<label>Upload CSV File</label>
+<input type="file" name="csv_file" accept=".csv">
+
+<button type="submit">Process Emails</button>
+
+</form>
+
+{% if results %}
+
+<h3>Processed Results</h3>
+
+<table border="1">
+
+<tr>
+<th>Email</th>
+<th>Domain</th>
+<th>Person</th>
+<th>Company</th>
+<th>Sector</th>
+<th>Confidence</th>
+</tr>
+
+{% for r in results %}
+
+<tr>
+<td>{{r.Email}}</td>
+<td>{{r.Domain}}</td>
+<td>{{r.Person}}</td>
+<td>{{r.Company}}</td>
+<td>{{r.Sector}}</td>
+<td>{{r.Confidence}}</td>
+</tr>
+
+{% endfor %}
+
+</table>
+
+{% if download_ready %}
+
+<br><br>
+
+<div class="download-section">
+
+<a href="/download">
+<button class="download-btn">Download Excel Sheet</button>
+</a>
+
+</div>
+
+{% endif %}
+
+{% endif %}
+
+</div>
+
+</div>
+
+</body>
+
+</html>
